@@ -15,14 +15,12 @@ dic = {
 
 
 def press():
-    number1 = dic[num1.get()]
-    number2 = dic[num2.get()]
-    number3 = dic[num3.get()]
-    number3 = int(number3)
-    final_number = str(number1) + str(number2)
-    final = int(final_number)
-    out = final * (10**number3) 
+    number1 = int(dic[num1.get()])
+    number2 = int(dic[num2.get()])
+    number3 = int(dic[num3.get()])
+    out = (number1*10 + number2)*(10**number3)
     var.set(out)
+
 
 root = Tk()
 root.configure(bg='light green')
