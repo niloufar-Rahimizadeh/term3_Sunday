@@ -1,9 +1,22 @@
 import tkinter as tk
 from tkinter.ttk import Combobox
 # function
+
+gender = ""
+
+
+def sel():
+    global gender
+    if var.get() == 1:
+        gender = "Male"
+    elif var.get() == 0:
+        gender = "Female"
+#
+
 def press():
+    global gender
     f = open("information.txt", "a")
-    f.write(f"name: {var1.get()}, family:{var2.get()}, age:{var3.get()}, country: {var6.get()}")
+    f.write(f"name: {var1.get()}, family:{var2.get()}, age:{var3.get()}, gender:{gender} country: {var6.get()}\n")
     f.close()
 ###################################
 
@@ -34,10 +47,11 @@ s1.grid(row=2, column=1)
 ############## forth row
 l4 = tk.Label(root, text="Gender: ", bg='#b08d8b')
 l4.grid(row=3, column=0)
-r1 = tk.Radiobutton(root, text="Female", value=0, bg='#b08d8b')
+var = tk.IntVar()
+r1 = tk.Radiobutton(root, variable=var, text="Female", value=0, bg='#b08d8b', command=sel)
 r1.grid(row=3, column=1)
 ############# fifth row
-r2 = tk.Radiobutton(root, text="male", value=1, bg='#b08d8b')
+r2 = tk.Radiobutton(root, variable=var, text="Male", value=1, bg='#b08d8b', command=sel)
 r2.grid(row=4, column=1)
 l5 = tk.Label(root, text="Country: ", bg='#b08d8b')
 l5.grid(row=5, column=0)
@@ -46,7 +60,7 @@ var6 = tk.StringVar()
 c1 = Combobox(root, textvariable=var6, values=["Iran", "Netherlands", "France"])
 c1.grid(row=5, column=1)
 
-b1 = tk.Button(root, text="Save", command= press())
+b1 = tk.Button(root, text="Save", command=press)
 b1.grid(row=6, column=0, columnspan=2, sticky="we")
 root.mainloop()
 
