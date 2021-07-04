@@ -12,3 +12,7 @@ name: s, family:s, age:20, gender: country: Netherlands
 name: d, family:d, age:25, gender:Male country: Netherlands
 name: s, family:s, age:25, gender:F country: Netherlands
 name: s, family:xd, age:25, gender:Female country: Netherlands
+name: Amir, family: Alii, age:21, gender:Female country: Netherlands
+name: s, family:dd, age:20, gender:Female, country: Netherlands, language: PY_VAR5,PY_VAR6,PY_VAR7
+name: s, family:ss, age:20, gender:Female, country: France, language: PY_VAR5,PY_VAR6,PY_VAR7
+name: y, family:fg, age:20, gender:Female, country: Netherlands, language: ,2,3

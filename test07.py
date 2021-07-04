@@ -5,9 +5,8 @@ from tkinter.ttk import Combobox
 #
 
 def press():
-    global gender
     f = open("information.txt", "a")
-    f.write(f"name: {var1.get()}, family:{var2.get()}, age:{var3.get()}, gender:{var.get()} country: {var6.get()}\n")
+    f.write(f"name: {var1.get()}, family:{var2.get()}, age:{var3.get()}, gender:{var.get()}, country: {var6.get()}, language: {var_cb1.get()},{var_cb2.get()},{var_cb3.get()}\n")
     f.close()
 ###################################
 
@@ -51,8 +50,22 @@ var6 = tk.StringVar()
 c1 = Combobox(root, textvariable=var6, values=["Iran", "Netherlands", "France"])
 c1.grid(row=5, column=1)
 
+l6 = tk.Label(root, text="Language:", bg='#b08d8b')
+l6.grid(row=6, column=0)
+var_cb1 = tk.StringVar()
+cb1 = tk.Checkbutton(root, text="Persian", variable=var_cb1, onvalue="1", bg='#b08d8b')
+cb1.grid(row=6, column=1)
+
+var_cb2 = tk.StringVar()
+cb2 = tk.Checkbutton(root, text="English", variable=var_cb2, onvalue="2", bg='#b08d8b')
+cb2.grid(row=7, column=1)
+
+var_cb3 = tk.StringVar()
+cb3 = tk.Checkbutton(root, text="German", variable=var_cb3, onvalue="3", bg='#b08d8b')
+cb3.grid(row=8, column=1)
+
 b1 = tk.Button(root, text="Save", command=press)
-b1.grid(row=6, column=0, columnspan=2, sticky="we")
+b1.grid(row=10, column=0, columnspan=2, sticky="we")
 root.mainloop()
 
 
