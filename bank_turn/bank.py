@@ -1,13 +1,29 @@
 import tkinter as tk
-
+from datetime import datetime
 # ##############functions #############
 
 
+def get_time():
+    dt = datetime.now()
+    return dt.strftime("%H:%M:%S")
 
+
+def get_date():
+    dt = datetime.now()
+    return dt.strftime("%d %b %Y")
+
+
+def get_number():
+    global counter, counter_list
+    counter += 1
+    con["turning"]["textvariable"].set(f"your turn: {counter}")
+    con["date"]["textvariable"].set(f"date: {get_date()}")
+    con["time"]["textvariable"].set(f"time: {get_time()}")
 
 
 # ################### root window ##################
-
+counter = 0
+counter_list = []
 root = tk.Tk()
 root.geometry("200x250")
 root.title("turning")
@@ -63,9 +79,8 @@ con = {
     }
 }
 
-b1 = tk.Button(root, text="Get a number")
-b1.grid(row=0, column=0)
-b1 = tk.Button(root, text="Get a number", height=5)
+
+b1 = tk.Button(root, text="Get a number", height=5, command=get_number)
 b1.grid(row=0, column=0, padx=45, pady=15)
 b2 = tk.Button(root, text="Cancel", height=5, width=11, command=root.destroy)
 b2.grid(row=1, column=0)
