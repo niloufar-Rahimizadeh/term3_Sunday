@@ -16,7 +16,9 @@ def get_date():
 def get_number():
     global counter, counter_list
     counter += 1
+    counter_list.append(counter)
     con["turning"]["textvariable"].set(f"your turn: {counter}")
+    con["waiting"]["textvariable"].set(f"waiting: {len(counter_list)-1}")
     con["date"]["textvariable"].set(f"date: {get_date()}")
     con["time"]["textvariable"].set(f"time: {get_time()}")
 
