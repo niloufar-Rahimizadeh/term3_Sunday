@@ -10,6 +10,13 @@ def callback2(a, b, c):
 
 def callback3(a, b, c):
     n3.set(var3.get())
+
+def callback_t_1(a, b, c):
+    h1 = int(h_p_1.get())
+    m1 = int(m_p_1.get())
+    s1 = int(s_p_1.get())
+    t_1.set('%02d:%02d:%02d'%(h1, m1, s1))
+
 ################################
 root = tk.Tk()
 root.geometry('240x240')
@@ -30,9 +37,15 @@ tk.Entry(lf1, textvariable=var1, width=10).grid(row=0, column=1)
 tk.Label(lf1, text="Time").grid(row=1, column=0)
 t1 = tk.Frame(lf1)
 t1.grid(row=1, column=1)
-tk.Spinbox(t1, from_=0, to=23, state='readonly', wrap=True, width=2).grid(row=0, column=0)
-tk.Spinbox(t1, from_=0, to=59, state='readonly', wrap=True, width=2).grid(row=0, column=1)
-tk.Spinbox(t1, from_=0, to=59, state='readonly', wrap=True, width=2).grid(row=0, column=2)
+h_p_1 = tk.StringVar()
+h_p_1.set("12")
+tk.Spinbox(t1, textvariable=h_p_1, from_=0, to=23, state='readonly', wrap=True, width=2).grid(row=0, column=0)
+m_p_1 = tk.StringVar()
+m_p_1.set("30")
+tk.Spinbox(t1, textvariable=m_p_1, from_=0, to=59, state='readonly', wrap=True, width=2).grid(row=0, column=1)
+s_p_1 = tk.StringVar()
+s_p_1.set("30")
+tk.Spinbox(t1, textvariable=s_p_1, from_=0, to=59, state='readonly', wrap=True, width=2).grid(row=0, column=2)
 # patient 2
 lf2 = tk.LabelFrame(patients, text="Patient 2")
 lf2.grid(row=1, column=0)
@@ -71,4 +84,18 @@ tk.Label(timer, textvariable=n2).grid(row=0, column=1)
 n3 = tk.StringVar()
 n3.set("Patient3")
 tk.Label(timer, textvariable=n3).grid(row=0, column=2)
+# the second row of timer
+t_1 = tk.StringVar()
+t_1.set("00:00:00")
+tk.Label(timer, textvariable=t_1).grid(row=1, column=0)
+t_2 = tk.StringVar()
+t_2.set("00:00:00")
+tk.Label(timer, textvariable=t_2).grid(row=1, column=1)
+t_3 = tk.StringVar()
+t_3.set("00:00:00")
+tk.Label(timer, textvariable=t_3).grid(row=1, column=2)
+##############3
+h_p_1.trace("w", callback_t_1)
+h_p_1.trace("w", callback_t_1)
+s_p_1.trace("w", callback_t_1)
 root.mainloop()
