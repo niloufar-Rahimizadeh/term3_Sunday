@@ -1,6 +1,7 @@
+import tkinter
 import tkinter as tk
 import tkinter.ttk as ttk
-
+from time import sleep
 # function
 def callback1(a, b, c):
     n1.set(var1.get())
@@ -29,6 +30,17 @@ def callback_t_3(a, b, c):
     s3 = int(s_p_3.get())
     t_3.set('%02d:%02d:%02d'%(h3, m3, s3)) # 12:30:30
 ################################
+def time_format():
+    pass
+
+def counter(seconds, var, button):
+    button.config(state=tk.DISABLED)
+    while seconds:
+        sleep(1)
+        seconds -= 1
+        var.set(time_format(seconds))
+    button.config(state=tk.ACTIVE)
+###############################
 root = tk.Tk()
 root.geometry('240x240')
 

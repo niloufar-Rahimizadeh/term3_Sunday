@@ -10,7 +10,7 @@ def press(v, b):
         if not doTick:
             return
         sleep(1)
-        v-=1
+        v-= 1
         b.set(v)
         root.update()
 
