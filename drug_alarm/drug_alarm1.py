@@ -1,7 +1,8 @@
-import tkinter
+from threading import Thread
 import tkinter as tk
 import tkinter.ttk as ttk
 from time import sleep
+
 # function
 def callback1(a, b, c):
     n1.set(var1.get())
@@ -30,16 +31,33 @@ def callback_t_3(a, b, c):
     s3 = int(s_p_3.get())
     t_3.set('%02d:%02d:%02d'%(h3, m3, s3)) # 12:30:30
 ################################
-def time_format():
-    pass
+def time_format(seconds):
+    h = int(seconds/3600)
+    tem = seconds % 3600
+    m = tem/60
+    s = tem % 60
+    return "%02d:%02d:%02d" % (h, m, s)
 
 def counter(seconds, var, button):
-    button.config(state=tk.DISABLED)
     while seconds:
         sleep(1)
         seconds -= 1
         var.set(time_format(seconds))
-    button.config(state=tk.ACTIVE)
+
+
+def start(number):
+    if number == 1:
+        seconds1 = int(h_p_1.get())*3600 + int(m_p_1.get())*60 + int(s_p_1.get())
+        th1 = Thread(target=counter, args=(seconds1, t_1, b1))
+        th1.start()
+    elif number == 2:
+        seconds2 = int(h_p_2.get()) * 3600 + int(m_p_2.get()) * 60 + int(s_p_2.get())
+        th2 = Thread(target=counter, args=(seconds2, t_2, b2))
+        th2.start()
+    else:
+        seconds3 = int(h_p_3.get()) * 3600 + int(m_p_3.get()) * 60 + int(s_p_3.get())
+        th3 = Thread(target=counter, args=(seconds3, t_3, b3))
+        th3.start()
 ###############################
 root = tk.Tk()
 root.geometry('240x240')
@@ -130,9 +148,10 @@ t_3 = tk.StringVar()
 t_3.set("00:00:00")
 tk.Label(timer, textvariable=t_3).grid(row=1, column=2)
 # the third row of timer
-tk.Button(timer, text='Start').grid(row=2, column=0)
-tk.Button(timer, text='Start').grid(row=2, column=1)
-tk.Button(timer, text='Start').grid(row=2, column=2)
+b1 = tk.Button(timer, text='Start', command=lambda: start(1)).grid(row=2, column=0)
+b2 = tk.Button(timer, text='Start', command=lambda: start(2)).grid(row=2, column=1)
+b3 = tk.Button(timer, text='Start', command=lambda: start(3)).grid(row=2, column=2)
+
 ##############
 h_p_1.trace("w", callback_t_1)
 m_p_1.trace("w", callback_t_1)
