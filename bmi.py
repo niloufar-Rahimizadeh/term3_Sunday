@@ -8,9 +8,10 @@ def press():
     var3.set(o)
     if o < 19:
         messagebox.showinfo('Analysis',  'you suffer from underweight!')
-    elif int(o) >= 19 & int(o) <= 24:
+    elif 19<=int(o) & int(o) <= 24:
         messagebox.showinfo('Analysis', 'Congratulation! your weight is balanced!')
-
+    else:
+        messagebox.showinfo('Analysis', 'Sorry! you suffer from overweight!')        
 
 
 
